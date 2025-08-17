@@ -1,0 +1,412 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(166, 100%, 99%);
+  --black-color: hsl(0, 0%, 0%);
+  
+  
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat Alternates", sans-serif;
+  --biggest-font-size: 2rem;
+  --big-font-size: 1.5rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+ 
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --big-font-size: 3rem;
+    --h1--font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section .products {
+  padding-block: 1rem 0.5rem;
+}
+
+.section__title {
+  text-align: center;
+  font-size: var(--big-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-top: -7rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+ /*=============== HEADER & NAV ===============*/
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo{
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__toggle,
+.nav__close{
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1150px){
+  .nav__menu{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: hsla(0, 0%, 100%, .1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 80%;
+    height: 100%;
+    padding: 6rem 3rem 0;
+    transition: right .4s;
+  }
+}
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+.nav__link{
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__link:hover{
+  text-decoration: underline;
+}
+
+.nav__close{
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+/*Show menu */
+.show-menu{
+  right: 0;
+}
+
+
+/*================= HOME =================*/
+.home__article{
+  position: relative;
+  padding-top: 13rem;
+  width: 100%;
+  height: 100vh;
+}
+
+.home__img,
+.home__shadow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.home__img{
+  object-fit: cover;
+  object-fit: center;
+  z-index: -1;
+}
+
+.home__shadow{
+  background-color: hsla(0, 0%, 0%, 0.5);
+  z-index: -1;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+/*=============== PRODUCTS ===============*/
+.products{
+  background-color: var(--body-first-color);
+}
+
+.products .section__title{
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.button{
+  color: var(--white-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--font-semi-bold);
+}
+
+.button i{
+  font-size: 1.5rem;
+  font-weight: initial;
+  transition: transform .4s;
+}
+
+.button:hover i{
+  transform: translateX(.5rem);
+}
+
+.products__container{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.products__card{
+  position: relative;
+  background-color: var(--dark-color);
+  padding: 1rem .5rem 1.25rem;
+  
+}
+
+.products__images{
+  position: relative;
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+}
+
+.products__shape{
+  width: 120px;
+  height: 60px;
+  background-color: var(--dark-color);
+  border-radius: 0;
+  clip-path: inset(0% 0 0 0);
+}
+
+.products__images img{
+  position: absolute;
+}
+
+.products__store{
+  width: 108px;
+  top: 0;
+  transition: transform .4s;
+}
+
+.products__data{
+  margin-top: 1.25rem;
+}
+
+
+
+.products__card:hover .products__store{
+  transform: translateY(-.25rem);
+}
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: .6rem;
+  background-color: hsl(166, 20%, 30%);
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: hsl(166, 20%, 40%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(166, 20%, 50%);
+}
+
+/*=============== SCROLL UP ===============*/
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -50%;
+  background-color: var(--body-color);
+  box-shadow: 0 4px 8px hsla(166, 85%, 8%, .4);
+  color: var(--white-color);
+  display: inline-flex;
+  padding: 6px;
+  font-size: 1.25rem;
+  z-index: var(--z-tooltip);
+  transition: bottom .4s, transform .4s;
+}
+
+.scrollup:hover{
+  transform: translateY(-.5rem);
+}
+
+/* Show Scroll Up */
+.show-sroll{
+  bottom: 3rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 330px){
+  .container{
+    margin-inline: 1rem;
+  }
+  .section__title{
+    font-size: 2rem;
+  }
+  .products__container{
+    grid-template-columns: 160px;
+    justify-content: center;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .products__container{
+    grid-template-columns: repeat(2, 160px);
+    justify-content: center;
+  }
+}
+
+
+@media screen and(min-width: 768px){
+  .products__container{
+    grid-template-columns: repeat(3, 160px);
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1150px){
+  .container{
+    margin-inline: auto;
+  }
+
+  .section{
+    padding-bottom: 7rem 5rem;
+  }
+  
+
+  .nav{
+    height: calc(--header-height) + 2rem;
+  }
+
+  .nav__toggle,
+  .nav__close{
+    display: none;
+  }
+
+  .nav__list{
+    flex-direction: row;
+    column-gap: 4rem;
+  }
+
+  .nav__menu{
+    width: initial;
+  }
+  
+  .products__container{
+    grid-template-columns: repeat(3, 250px);
+    gap: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  .products__card{
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .products__shape{
+    width: 200px;
+    height: 40px;
+  }
+
+  .products__data{
+    margin-top: 1.5rem;
+  }
+
+  
+  .products__price{
+    font-size: var(--h2-font-size);
+  }
+
+  .scrollup{
+    right: 3rem;
+  }
+}
+
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
+@media screen and(min-width: 2048px){
+  body{
+    zoom: 1.3;
+  }
+}
